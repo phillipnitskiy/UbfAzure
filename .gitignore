@@ -241,3 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /Infrastucture/Models/GDV_POCContext.cs
+/Infrastucture/SQLAzure/GDV_POCContext.cs

@@ -3,10 +3,9 @@ using System.Linq;
 using Infrastructure.Interfacies.DTO;
 using Infrastructure.Interfacies.Interfacies;
 using Infrastucture.Mappers;
-using Infrastucture.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastucture.Repositories
+namespace Infrastucture.SQLAzure
 {
     public class UbfRepository : IRepository<UbfDTO, Guid>
     {

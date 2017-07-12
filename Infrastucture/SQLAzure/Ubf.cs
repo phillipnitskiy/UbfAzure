@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Infrastucture.Models
+namespace Infrastucture.SQLAzure
 {
     public partial class Ubf
     {

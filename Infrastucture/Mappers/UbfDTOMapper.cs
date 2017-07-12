@@ -1,5 +1,5 @@
 ﻿using Infrastructure.Interfacies.DTO;
-using Infrastucture.Models;
+using Infrastucture.SQLAzure;
 
 namespace Infrastucture.Mappers
 {

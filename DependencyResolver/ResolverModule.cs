@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Business.Interfacies.Interfacies;
 using Business.Servicies;
 using Infrastructure.Interfacies.DTO;
 using Infrastructure.Interfacies.Interfacies;
 using Ninject;
-using Infrastucture.Models;
-using Infrastucture.Repositories;
+using Infrastucture.SQLAzure;
 using Ninject.Web.Common;
 using Microsoft.EntityFrameworkCore;
 

@@ -154,10 +154,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mappers\UbfDTOMapper.cs" />
-    <Compile Include="Models\GDV_POCContext.cs" />
-    <Compile Include="Models\Ubf.cs" />
+    <Compile Include="SQLAzure\GDV_POCContext.cs" />
+    <Compile Include="SQLAzure\Ubf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\UbfRepository.cs" />
+    <Compile Include="SQLAzure\UbfRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
