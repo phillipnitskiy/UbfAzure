@@ -8,7 +8,8 @@ namespace Business.Servicies
 {
     public class UbfService : IUbfService
     {
-        private readonly IRepository<UbfDTO, Guid> _ubfRepository;
+        private readonly IUbfRepository _ubfRepository;
+        private readonly IXmlRepository _xmlRepository;
 
         private static readonly string xsdMarkup =
   @"<?xml version='1.0'?>
@@ -22,9 +23,10 @@ namespace Business.Servicies
 	                                    </xsd:element>
                                     </xsd:schema>";
 
-        public UbfService(IRepository<UbfDTO, Guid> ubfRepository)
+        public UbfService(IUbfRepository ubfRepository, IXmlRepository xmlRepository)
         {
             _ubfRepository = ubfRepository;
+            _xmlRepository = xmlRepository;
         }
 
         public Guid ValidateUbf(int producerId, XDocument xml)
@@ -33,9 +35,10 @@ namespace Business.Servicies
             //schemas.Add("", XmlReader.Create(new StringReader(xsdMarkup)));
 
             //xml.Validate(schemas, null);
-            var guid = Guid.NewGuid();
-            _ubfRepository.Create(new UbfDTO {Id = guid, ProducerId = producerId, Status = 2});
-            
+            //var guid = Guid.NewGuid();
+            var guid =_ubfRepository.Create(new UbfDTO {ProducerId = producerId, Status = 2});
+            _xmlRepository.Create(new XmlDTO {Id = guid, Document = xml});
+
             return guid;
         }
 

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastucture.SQLAzure
 {
-    public class UbfRepository : IRepository<UbfDTO, Guid>
+    public class UbfRepository : IUbfRepository
     {
         private readonly DbContext _dbContext;
 
@@ -28,11 +28,12 @@ namespace Infrastucture.SQLAzure
             throw new NotImplementedException();
         }
 
-        public void Create(UbfDTO entity)
+        public Guid Create(UbfDTO entity)
         {
             var ubf = UbfDTOMapper.ToUbf(entity);
             _dbContext.Add(ubf);
             _dbContext.SaveChanges();
+            return ubf.Id;
         }
 
         public void Delete(UbfDTO entity)

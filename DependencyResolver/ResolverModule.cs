@@ -3,6 +3,7 @@ using Business.Interfacies.Interfacies;
 using Business.Servicies;
 using Infrastructure.Interfacies.DTO;
 using Infrastructure.Interfacies.Interfacies;
+using Infrastucture.BlobStorage;
 using Ninject;
 using Infrastucture.SQLAzure;
 using Ninject.Web.Common;
@@ -31,7 +32,8 @@ namespace DependencyResolver
 
             }
 
-            kernel.Bind<IRepository<UbfDTO, Guid>>().To<UbfRepository>();
+            kernel.Bind<IUbfRepository>().To<UbfRepository>();
+            kernel.Bind<IXmlRepository>().To<XmlRepository>();
 
             kernel.Bind<IUbfService>().To<UbfService>();
         }

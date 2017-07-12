@@ -21,7 +21,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public IHttpActionResult ValidateUbf([FromHeader] int producerId, [FromBody] XDocument xml)
         {
-            var guid = _ubfServise.ValidateUbf(producerId, new XDocument());
+            var guid = _ubfServise.ValidateUbf(producerId, xml);
             return Json(new { id = guid, status = Status.InProcess.ToString() });
         }
 
