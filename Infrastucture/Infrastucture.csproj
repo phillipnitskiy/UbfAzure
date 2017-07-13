@@ -186,6 +186,8 @@
     <Compile Include="BlobStorage\Xml.cs" />
     <Compile Include="BlobStorage\XmlRepository.cs" />
     <Compile Include="Mappers\UbfDTOMapper.cs" />
+    <Compile Include="QueueStorage\MessageRepository.cs" />
+    <Compile Include="QueueStorage\QueueStorageHelper.cs" />
     <Compile Include="SQLAzure\GDV_POCContext.cs" />
     <Compile Include="SQLAzure\Ubf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,9 +202,7 @@
       <Name>Infrastructure.Interfacies</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="QueueStorage\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

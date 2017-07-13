@@ -10,6 +10,7 @@ namespace Business.Servicies
     {
         private readonly IUbfRepository _ubfRepository;
         private readonly IXmlRepository _xmlRepository;
+        private readonly IMessageRepository<Guid> _messageRepository;
 
         private static readonly string xsdMarkup =
   @"<?xml version='1.0'?>
@@ -23,10 +24,11 @@ namespace Business.Servicies
 	                                    </xsd:element>
                                     </xsd:schema>";
 
-        public UbfService(IUbfRepository ubfRepository, IXmlRepository xmlRepository)
+        public UbfService(IUbfRepository ubfRepository, IXmlRepository xmlRepository, IMessageRepository<Guid> messageRepository)
         {
             _ubfRepository = ubfRepository;
             _xmlRepository = xmlRepository;
+            _messageRepository = messageRepository;
         }
 
         public Guid ValidateUbf(int producerId, XDocument xml)
@@ -38,7 +40,7 @@ namespace Business.Servicies
             //var guid = Guid.NewGuid();
             var guid =_ubfRepository.Create(new UbfDTO {ProducerId = producerId, Status = 2});
             _xmlRepository.Create(new XmlDTO {Id = guid, Document = xml});
-
+            _messageRepository.Add(guid);
             return guid;
         }
 

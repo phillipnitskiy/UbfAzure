@@ -3,6 +3,9 @@
   "WebJobs": [
     {
       "filePath": "../GDV-POC-WebJob/GDV-POC-WebJob.csproj"
+    },
+    {
+      "filePath": "../GDV-POC-WebJobContinious/GDV-POC-WebJobContinious.csproj"
     }
   ]
 }

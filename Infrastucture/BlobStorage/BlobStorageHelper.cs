@@ -23,15 +23,15 @@ namespace Infrastucture.BlobStorage
             string containerNameKey)
         {
             // Pull these from config
-            var blobStorageConnectionString = ConfigurationManager.AppSettings[connectionStringKey];
+            var storageConnectionString = ConfigurationManager.AppSettings[connectionStringKey];
             var blobStorageContainerName = ConfigurationManager.AppSettings[containerNameKey];
 
-            return GetBlobContainer(blobStorageConnectionString, blobStorageContainerName);
+            return GetBlobContainer(storageConnectionString, blobStorageContainerName);
         }
 
         public static CloudBlobContainer GetBlobContainerFromConfiguration(string containerNameKey)
         {
-            return GetBlobContainerFromConfiguration("BlobStorageConnectionString", containerNameKey);
+            return GetBlobContainerFromConfiguration("StorageConnectionString", containerNameKey);
         }
     }
 }
