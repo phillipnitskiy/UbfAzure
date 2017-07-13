@@ -27,7 +27,6 @@ namespace Infrastucture.BlobStorage
 
         public Guid Create(XmlDTO entity)
         {
-
             var container = BlobStorageHelper.GetBlobContainerFromConfiguration("BlobStorageContainerNameOriginal");
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(entity.Id.ToString());
 
@@ -43,7 +42,7 @@ namespace Infrastucture.BlobStorage
 
         public void Update(XmlDTO entity)
         {
-            throw new NotImplementedException();
+            Create(entity);
         }
     }
 }
