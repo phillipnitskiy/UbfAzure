@@ -38,21 +38,33 @@ namespace Business.Servicies
 
             //xml.Validate(schemas, null);
             //var guid = Guid.NewGuid();
+
+            // TODO: later tis will validate xml scheme and throw an exception if invalid
+
             var guid =_ubfRepository.Create(new UbfDTO {ProducerId = producerId, Status = 1});
+
+            _xmlRepository.ContainerConnectionStringName = "BlobStorageContainerNameOriginal";
             _xmlRepository.Create(new XmlDTO {Id = guid, Document = xml});
+
             _messageRepository.Add(guid);
+
             return guid;
         }
 
         public XDocument GetValidatedUbf(int producerId, Guid id)
         {
-            XDocument doc1 = new XDocument(
-                new XElement("ubf",
-                    new XElement("PayloadId", "1")
-                )
-            );
+            var ubf = _ubfRepository.GetByKey(id);
 
-            return doc1;
+            if (ubf.ProducerId == producerId)
+            {
+                _xmlRepository.ContainerConnectionStringName = "BlobStorageContainerNameValidated";
+                var xmlDto = _xmlRepository.GetByKey(id);
+                return xmlDto.Document;
+            }
+
+            // TODO: later tis will throw exception
+            
+            return null;
         }
 
         public int GetStatus(int producerId, Guid id)

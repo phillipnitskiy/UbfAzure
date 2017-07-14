@@ -5,6 +5,6 @@ namespace Infrastructure.Interfacies.Interfacies
 {
     public interface IXmlRepository : IRepository<XmlDTO, Guid>
     {
-        
+        string ContainerConnectionStringName { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         public IHttpActionResult GetStatus([FromHeader] int producerId, [FromUri] Guid id)
         {
             var statusCode = _ubfServise.GetStatus(producerId, id);
-            return Json(new {status = (Status) statusCode});
+            return Json(new {status = ((Status) statusCode).ToString()});
         }
     }
 }
