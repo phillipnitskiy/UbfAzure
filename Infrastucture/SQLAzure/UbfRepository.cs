@@ -43,7 +43,14 @@ namespace Infrastucture.SQLAzure
 
         public void Update(UbfDTO entity)
         {
-            throw new NotImplementedException();
+            var ubf = UbfDTOMapper.ToUbf(entity);
+
+            var entry = _dbContext.Set<Ubf>()
+                        .First(u => u.Id == ubf.Id);
+            entry.ProducerId = ubf.ProducerId;
+            entry.Status = ubf.Status;
+
+            _dbContext.SaveChanges();
         }
     }
 }

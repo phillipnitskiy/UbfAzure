@@ -38,7 +38,7 @@ namespace Business.Servicies
 
             //xml.Validate(schemas, null);
             //var guid = Guid.NewGuid();
-            var guid =_ubfRepository.Create(new UbfDTO {ProducerId = producerId, Status = 2});
+            var guid =_ubfRepository.Create(new UbfDTO {ProducerId = producerId, Status = 1});
             _xmlRepository.Create(new XmlDTO {Id = guid, Document = xml});
             _messageRepository.Add(guid);
             return guid;
