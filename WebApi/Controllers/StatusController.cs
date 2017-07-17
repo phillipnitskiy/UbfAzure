@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 using Business.Interfacies.Interfacies;
+using WebApi.Filters;
 using WebApi.Infrastructure;
 
 namespace WebApi.Controllers
@@ -16,6 +17,7 @@ namespace WebApi.Controllers
 
         // GET: api/Status/5
         [HttpGet]
+        [CustomExceptionFilter]
         public IHttpActionResult GetStatus([FromHeader] int producerId, [FromUri] Guid id)
         {
             var statusCode = _ubfServise.GetStatus(producerId, id);

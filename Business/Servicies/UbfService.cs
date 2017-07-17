@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Xml.Linq;
+using System.Xml.Schema;
+using Business.Interfacies.Exceptions;
 using Business.Interfacies.Interfacies;
+using Business.Validator;
 using Infrastructure.Interfacies.DTO;
 using Infrastructure.Interfacies.Interfacies;
 
@@ -12,18 +15,6 @@ namespace Business.Servicies
         private readonly IXmlRepository _xmlRepository;
         private readonly IMessageRepository<Guid> _messageRepository;
 
-        private static readonly string xsdMarkup =
-  @"<?xml version='1.0'?>
-                                    <xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
-	                                    <xsd:element name='ubf'>
-		                                    <xsd:complexType>  
-			                                    <xsd:sequence>  
-				                                    <xsd:element name='PayloadId' type='xsd:string'/>    
-			                                    </xsd:sequence>  
-		                                    </xsd:complexType>  
-	                                    </xsd:element>
-                                    </xsd:schema>";
-
         public UbfService(IUbfRepository ubfRepository, IXmlRepository xmlRepository, IMessageRepository<Guid> messageRepository)
         {
             _ubfRepository = ubfRepository;
@@ -33,14 +24,8 @@ namespace Business.Servicies
 
         public Guid ValidateUbf(int producerId, XDocument xml)
         {
-            //XmlSchemaSet schemas = new XmlSchemaSet();
-            //schemas.Add("", XmlReader.Create(new StringReader(xsdMarkup)));
-
-            //xml.Validate(schemas, null);
-            //var guid = Guid.NewGuid();
-
-            // TODO: later tis will validate xml scheme and throw an exception if invalid
-
+            xml.ValidateXmlScheme();
+            
             var guid =_ubfRepository.Create(new UbfDTO {ProducerId = producerId, Status = 1});
 
             _xmlRepository.ContainerConnectionStringName = "BlobStorageContainerNameOriginal";
@@ -55,22 +40,40 @@ namespace Business.Servicies
         {
             var ubf = _ubfRepository.GetByKey(id);
 
-            if (ubf.ProducerId == producerId)
+            if (ubf == null)
             {
-                _xmlRepository.ContainerConnectionStringName = "BlobStorageContainerNameValidated";
-                var xmlDto = _xmlRepository.GetByKey(id);
-                return xmlDto.Document;
+                throw new ItemNotFoundException();
+            }
+            if (producerId != ubf.ProducerId)
+            {
+                throw new AccessDeniedException();
             }
 
-            // TODO: later tis will throw exception
-            
-            return null;
+            _xmlRepository.ContainerConnectionStringName = "BlobStorageContainerNameValidated";
+            var xmlDto = _xmlRepository.GetByKey(id);
+
+            if (xmlDto == null)
+            {
+                throw new ItemNotFoundException();
+            }
+
+            return xmlDto.Document;
         }
 
         public int GetStatus(int producerId, Guid id)
         {
-            var ubfStatus = _ubfRepository.GetByKey(id);
-            return ubfStatus.Status;
+            var ubf = _ubfRepository.GetByKey(id);
+
+            if (ubf == null)
+            {
+                throw new ItemNotFoundException();
+            }
+            if (producerId != ubf.ProducerId)
+            {
+                throw new AccessDeniedException();
+            }
+
+            return ubf.Status;
         }
     }
 }
