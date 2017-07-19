@@ -13,24 +13,17 @@ namespace WebApi.Filters
             if (actionExecutedContext.Exception is ItemNotFoundException)
             {
                 actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.NotFound);
-            }
-
-            if (actionExecutedContext.Exception is AccessDeniedException)
+            } else if (actionExecutedContext.Exception is AccessDeniedException)
+            {
+                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+            } else if (actionExecutedContext.Exception is XmlValidationException)
             {
                 actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-
-            if (actionExecutedContext.Exception is XmlValidationException)
+            else
             {
-                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
-
-            //if (actionExecutedContext.Exception is NotImplementedException)
-            //{
-            //    actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.NotImplemented);
-            //}
-
-            actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
 
             base.OnException(actionExecutedContext);
         }

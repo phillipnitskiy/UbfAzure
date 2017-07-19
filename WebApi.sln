@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDV-POC-WebJob", "GDV-POC-W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDV-POC-WebJobContinious", "GDV-POC-WebJobContinious\GDV-POC-WebJobContinious.csproj", "{9332EBE6-A741-495A-93F5-818624B34BBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyResolver.Unity", "DependencyResolver.Unity\DependencyResolver.Unity.csproj", "{6FB01E03-7457-4CC4-8277-D7EE2906ABE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{9332EBE6-A741-495A-93F5-818624B34BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9332EBE6-A741-495A-93F5-818624B34BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9332EBE6-A741-495A-93F5-818624B34BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB01E03-7457-4CC4-8277-D7EE2906ABE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB01E03-7457-4CC4-8277-D7EE2906ABE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB01E03-7457-4CC4-8277-D7EE2906ABE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB01E03-7457-4CC4-8277-D7EE2906ABE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
