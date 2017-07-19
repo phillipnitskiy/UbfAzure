@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 using Infrastructure.Interfacies.DTO;
 using Infrastructure.Interfacies.Interfacies;

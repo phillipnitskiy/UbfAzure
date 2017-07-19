@@ -1,8 +1,6 @@
 ﻿using System;
-using Infrastructure.Interfacies.DTO;
 using Infrastructure.Interfacies.Interfacies;
 using Microsoft.WindowsAzure.Storage.Queue;
-using Newtonsoft.Json;
 
 namespace Infrastucture.QueueStorage
 {

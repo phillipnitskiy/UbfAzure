@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using Microsoft.Practices.Unity;
+﻿using System.Web.Http;
 
 namespace WebApi
 {

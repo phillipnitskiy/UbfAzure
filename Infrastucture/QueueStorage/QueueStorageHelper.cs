@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Infrastucture.QueueStorage

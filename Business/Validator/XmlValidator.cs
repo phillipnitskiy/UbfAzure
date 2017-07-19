@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -9,7 +8,7 @@ namespace Business.Validator
 {
     public class XmlValidator
     {
-        private static readonly string xsdMarkup =
+        private static readonly string XsdMarkup =
             @"<?xml version='1.0'?>
                                     <xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
 	                                    <xsd:element name='ubf'>
@@ -21,18 +20,18 @@ namespace Business.Validator
 	                                    </xsd:element>
                                     </xsd:schema>";
 
-        private readonly XmlSchemaSet schemaSet;
+        private readonly XmlSchemaSet _schemaSet;
         public XmlValidator()
         {
-            schemaSet = new XmlSchemaSet();
-            schemaSet.Add("", XmlReader.Create(new StringReader(xsdMarkup)));
+            _schemaSet = new XmlSchemaSet();
+            _schemaSet.Add("", XmlReader.Create(new StringReader(XsdMarkup)));
         }
 
         public void ValidateXmlScheme(XDocument xml)
         {
             try
             {
-                xml.Validate(schemaSet, null);
+                xml.Validate(_schemaSet, null);
             }
             catch (XmlSchemaValidationException e)
             {

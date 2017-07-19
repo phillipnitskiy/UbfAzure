@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Infrastructure.Interfacies.Interfacies
+﻿namespace Infrastructure.Interfacies.Interfacies
 {
     public interface IMessageRepository <TMessageEnity>
     {

@@ -1,26 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using Infrastructure.Interfacies.Interfacies;
 using Microsoft.Azure.WebJobs;
-using Newtonsoft.Json;
 using Ninject;
 
 namespace GDV_POC_WebJobContinious
 {
     public class Functions
     {
-        //private readonly IUbfRepository _ubfRepository;
-
-        //public Functions(IUbfRepository ubfRepository)
-        //{
-        //    _ubfRepository = ubfRepository;
-        //}
-
         [Inject]
         public static IUbfRepository _ubfRepository { get; set; }
 
