@@ -138,9 +138,13 @@
       <Project>{E78F349C-A3C1-4D30-8997-C3485416018D}</Project>
       <Name>Business.Interfacies</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DependencyResolver.Unity\DependencyResolver.Unity.csproj">
-      <Project>{6fb01e03-7457-4cc4-8277-d7ee2906abe9}</Project>
-      <Name>DependencyResolver.Unity</Name>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{00b51ec2-5a40-4dca-ac1a-3589a7bb263a}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastucture\Infrastucture.csproj">
+      <Project>{3300d65d-5331-4f80-aeb2-098cbc7fd33a}</Project>
+      <Name>Infrastucture</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,4 @@
 using System;
-using DependencyResolver.Unity;
 using Microsoft.Practices.Unity;
 
 namespace WebApi.App_Start
@@ -32,13 +31,8 @@ namespace WebApi.App_Start
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
-            // container.LoadConfiguration();
-
-            // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
-
-            container.ConfigureContainer();
+            container.AddNewExtension<Business.CompositionModule>();
+            container.AddNewExtension<Infrastucture.CompositionModule>();
         }
     }
 }
